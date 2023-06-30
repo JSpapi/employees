@@ -5,7 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 
 const reducers = combineReducers({
-  test: {},
+  test: "userReducer",
 });
 
 export const store = configureStore({
