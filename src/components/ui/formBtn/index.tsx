@@ -1,8 +1,5 @@
+import { Button } from "@mui/material";
 import React from "react";
-import { LoadingButton } from "@mui/lab";
-import { SxProps } from "@mui/material";
-import { Theme } from "@mui/system";
-
 interface IProps {
   children: React.ReactNode;
   type?: "button" | "submit" | "reset" | undefined;
@@ -29,23 +26,19 @@ export const FormBtn = ({
   color,
   size,
   variant,
-  loading,
-  // loadingPosition,
-  // startIcon,
+  startIcon,
   onClcik,
 }: IProps) => {
   return (
-    <LoadingButton
+    <Button
       variant={variant}
       type={type}
       color={color}
       size={size}
-      loading={loading}
-      // loadingPosition={loadingPosition}
-      // startIcon={startIcon}
+      startIcon={startIcon}
       onClick={onClcik}
     >
       {children}
-    </LoadingButton>
+    </Button>
   );
 };

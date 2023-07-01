@@ -2,6 +2,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { Container } from "@mui/system";
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components/header";
+import { AuthLoading } from "./features/auth/AuthLoading";
 import { Home } from "./pages/home";
 import { routes } from "./routes";
 
@@ -19,15 +20,17 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <div>
-        <Container maxWidth="lg">
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {setRoutes()}
-          </Routes>
-        </Container>
-      </div>
+      <AuthLoading>
+        <div>
+          <Container maxWidth="lg">
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              {setRoutes()}
+            </Routes>
+          </Container>
+        </div>
+      </AuthLoading>
     </ThemeProvider>
   );
 }
