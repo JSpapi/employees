@@ -5,4 +5,4 @@ export interface IUser {
   name: string;
 }
 
-export type UserData = Omit<IUser, "id">;
+export type UserData = Omit<IUser, 'id'>
