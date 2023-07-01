@@ -11,6 +11,7 @@ import { UserData } from "../../types/user.type";
 import { isErrorWithMessage } from "../../utils/IsErrorWithMessage";
 import { ErrorMessage } from "../../components/ui/errorMessage";
 import s from "./index.module.css";
+import { useUser } from "../../hooks/useUser";
 export const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -36,7 +37,8 @@ export const Login = () => {
   });
 
   const { handleSubmit, resetField } = methods;
-
+  const { user } = useUser();
+  
   const onFormSubmit: SubmitHandler<UserData> = async (data) => {
     try {
       setLoading(true);
