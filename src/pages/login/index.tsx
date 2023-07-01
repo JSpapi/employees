@@ -1,15 +1,23 @@
 import { Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormInput } from "../../components/ui/formInput";
 import { LoadingButton } from "@mui/lab";
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useLoginMutation } from "../../services/auth.api";
+import { UserData } from "../../types/user.type";
+import { isErrorWithMessage } from "../../utils/IsErrorWithMessage";
+import { ErrorMessage } from "../../components/ui/errorMessage";
 import s from "./index.module.css";
 export const Login = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const [loginUser, loginUserResult] = useLoginMutation();
+
+  const navigate = useNavigate();
 
   const schema = object({
     email: string()
@@ -27,23 +35,27 @@ export const Login = () => {
     resolver: zodResolver(schema),
   });
 
-  const {
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitSuccessful },
-  } = methods;
+  const { handleSubmit, resetField } = methods;
 
-  useEffect(() => {
-    if (isSubmitSuccessful) reset();
-  }, [isSubmitSuccessful, reset]);
-
-  const onFormSubmit: SubmitHandler<RegisterInput> = (data) => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      console.log(data);
-    }, 2000);
+  const onFormSubmit: SubmitHandler<UserData> = async (data) => {
+    try {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+      await loginUser(data).unwrap();
+      navigate("/");
+    } catch (err) {
+      const maybeError = isErrorWithMessage(err);
+      resetField("password");
+      if (maybeError) {
+        setError(err.data.message);
+      } else {
+        setError("Неизвестная ошибка");
+      }
+    }
   };
+
   return (
     <div className="login">
       <div className="login__content">
@@ -94,6 +106,7 @@ export const Login = () => {
                 Зарегестрируйтесь
               </Link>
             </Typography>
+            <ErrorMessage message={error} />
           </form>
         </FormProvider>
       </div>
