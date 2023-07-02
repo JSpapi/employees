@@ -38,7 +38,7 @@ export const employeesApi = api.injectEndpoints({
   }),
 });
 
-const {
+export const {
   useGetAllEmployeesQuery,
   useGetEmployeeQuery,
   useEditEmployeeMutation,
