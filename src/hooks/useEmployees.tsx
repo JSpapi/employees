@@ -1,6 +1,6 @@
 import { useTypedSelector } from "./useTypedSelector";
 
-export const useUser = () => {
-  const { employees } = useTypedSelector((state) => state.employees);
-  return { employees };
+export const useEmployees = () => {
+  const employees = useTypedSelector((state) => state.employees.emplyees);
+  return employees;
 };
