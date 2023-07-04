@@ -21,7 +21,7 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <AuthLoading>
-        <div>
+        <>
           <Container maxWidth="lg">
             <Header />
             <Routes>
@@ -29,7 +29,7 @@ function App() {
               {setRoutes()}
             </Routes>
           </Container>
-        </div>
+        </>
       </AuthLoading>
     </ThemeProvider>
   );
