@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FormBtn } from "../../components/ui/formBtn";
-import { IEmplyee } from "../../types/employees.type";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useGetAllEmployeesQuery } from "../../services/employees.api";
 import {
@@ -13,10 +12,18 @@ import {
   TableRow,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../hooks/useUser";
 
 export const Home = () => {
   const { data, isLoading } = useGetAllEmployeesQuery();
   const navigate = useNavigate();
+  const { user } = useUser();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [navigate, user]);
 
   const handleUser = (id: string) => navigate(`/employee/${id}`);
 

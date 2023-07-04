@@ -14,7 +14,7 @@ const employeesSlice = createSlice({
   name: "employees",
   initialState,
   reducers: {
-    logout: () => initialState,
+    EmployeesLogout: () => initialState,
   },
   extraReducers: (builder) => {
     builder.addMatcher(

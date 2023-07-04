@@ -5,8 +5,8 @@ import { actions as authActions } from "../features/auth/auth.slice";
 import { actions as employeesActions } from "../features/emplyees/employees.slice";
 
 const rootActions = {
-  ...authActions,
   ...employeesActions,
+  ...authActions,
 };
 
 export const useAction = () => {
