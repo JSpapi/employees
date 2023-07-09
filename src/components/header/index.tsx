@@ -10,7 +10,6 @@ import { FormBtn } from "../ui/formBtn";
 import s from "./Index.module.css";
 import { useUser } from "../../hooks/useUser";
 import { useAction } from "../../hooks/useAction";
-import { useDispatch } from "react-redux";
 export const Header = () => {
   const navigate = useNavigate();
   const { user } = useUser();
@@ -23,7 +22,7 @@ export const Header = () => {
 
   return (
     <header className={s.header}>
-      <Link to="/" className={s.team}>
+      <Link to="/">
         <FormBtn startIcon={<GroupIcon />} color="inherit">
           <Typography variant="h5">Сотрудники</Typography>
         </FormBtn>

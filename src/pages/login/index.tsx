@@ -38,7 +38,7 @@ export const Login = () => {
 
   const { handleSubmit, resetField } = methods;
   const { user } = useUser();
-  
+
   const onFormSubmit: SubmitHandler<UserData> = async (data) => {
     try {
       setLoading(true);
@@ -92,7 +92,7 @@ export const Login = () => {
               sx={{ marginBottom: 2 }}
             >
               <span style={{ color: "#fff", textTransform: "capitalize" }}>
-                Зарегестрироваться
+                Войти
               </span>
             </LoadingButton>
             <Typography variant="caption" display="block">
