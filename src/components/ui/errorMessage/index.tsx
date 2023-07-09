@@ -6,7 +6,7 @@ interface IProps {
 }
 
 export const ErrorMessage = ({ message }: IProps) => {
-	if(!message) return null;
+  if (!message) return null;
 
   return <Alert severity="error">{message}</Alert>;
 };

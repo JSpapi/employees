@@ -2,19 +2,15 @@ import { TextField, TextFieldProps } from "@mui/material";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
-type props = {
+type Props = {
   name: string;
 } & TextFieldProps;
 
-export const FormInput = ({ name, ...otherProps }: props) => {
+export const FormInput = ({ name, ...otherProps }: Props) => {
   const {
     control,
     formState: { errors },
   } = useFormContext();
-
-  const inputText = {
-    color: "#737070",
-  };
 
   return (
     <Controller
