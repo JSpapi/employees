@@ -17,7 +17,7 @@ interface IProps {
 export const EmployeesTable = ({ employees }: IProps) => {
   const navigate = useNavigate();
 
-  const handleEmployeeInfo = (id: string) => navigate(`/employee/${id}`);
+  const goToEmployeeInfoPage = (id: string) => navigate(`/employee/${id}`);
 
   return (
     <TableContainer component={Paper} sx={{ marginTop: 3 }}>
@@ -38,7 +38,7 @@ export const EmployeesTable = ({ employees }: IProps) => {
                   "&:last-child td, &:last-child th": { border: 0 },
                   cursor: "pointer",
                 }}
-                onClick={() => handleEmployeeInfo(row.id)}
+                onClick={() => goToEmployeeInfoPage(row.id)}
               >
                 <TableCell component="th" scope="row" align="center">
                   {row.firstName}
