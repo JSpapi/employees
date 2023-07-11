@@ -26,7 +26,8 @@ body {
 }
 
 /* !form style */
-.login {
+.login,
+.edit {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,13 +42,22 @@ body {
   border-radius: 3px;
 }
 
-.login__header {
+.login__header,
+.edit__header {
   padding: 15px;
   border-bottom: 0.5px solid #737070;
 }
 
-.login__form {
+.login__form,
+.edit__form {
   padding: 15px;
+}
+
+.edit__content {
+  max-width: 500px;
+  width: 100%;
+  border: 0.5px solid #737070;
+  border-radius: 3px;
 }
 
 /* !form style end */

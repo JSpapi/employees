@@ -18,6 +18,8 @@ export const Home = () => {
     }
   }, [navigate, user]);
 
+  const goToAddUserPage = () => navigate("/employee/add");
+
   return (
     <div>
       {isLoading ? (
@@ -30,6 +32,7 @@ export const Home = () => {
             variant="contained"
             size="small"
             startIcon={<AddCircleOutlineIcon />}
+            onClcik={goToAddUserPage}
           >
             <span style={{ color: "#fff", textTransform: "capitalize" }}>
               Добавить
