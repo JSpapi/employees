@@ -1,0 +1,8 @@
+.employee {
+  display: flex;
+  width: 100%;
+}
+
+.employee_actions {
+  margin-top: 20px;
+}
