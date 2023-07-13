@@ -9,7 +9,7 @@ export const routes = [
   { id: "employeeAdd", path: "/employee/add", element: <AddEmployee /> },
   { id: "employeeEdit", path: "/employee/edit", element: <EditEmployee /> },
   { id: "employee", path: "/employee/:id", element: <Employee /> },
-  { id: "status", path: "/status", element: <Status /> },
+  { id: "status", path: "/status/:result", element: <Status /> },
   { id: "login", path: "/login", element: <Login /> },
   { id: "register", path: "/register", element: <Register /> },
 ] as const;
