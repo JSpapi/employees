@@ -48,7 +48,7 @@ export const AddEmployee = () => {
         setLoading(false);
       }, 2000);
       await addEmployee(data).unwrap();
-      navigate("/");
+      navigate("/status/created");
       reset();
     } catch (err) {
       const maybeError = isErrorWithMessage(err);
