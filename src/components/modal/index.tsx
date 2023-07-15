@@ -9,14 +9,14 @@ import {
 
 interface IProps {
   closeModal: () => void;
-  handleDeleteUser: () => Promise<void>;
+  handleUser: () => Promise<void>;
   isModalOpan: boolean;
 }
 
 export const CustomModal = ({
   closeModal,
   isModalOpan,
-  handleDeleteUser,
+  handleUser,
 }: IProps) => {
   return (
     <Dialog
@@ -35,12 +35,7 @@ export const CustomModal = ({
         <Button onClick={closeModal} color="warning" variant="outlined">
           <span style={{ textTransform: "capitalize" }}>Отмена</span>
         </Button>
-        <Button
-          onClick={handleDeleteUser}
-          color="info"
-          variant="contained"
-          autoFocus
-        >
+        <Button onClick={handleUser} color="info" variant="contained" autoFocus>
           <span style={{ textTransform: "capitalize" }}>Подтвердить</span>
         </Button>
       </DialogActions>

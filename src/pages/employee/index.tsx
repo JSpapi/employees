@@ -139,7 +139,7 @@ export const Employee = () => {
           <CustomModal
             closeModal={closeModal}
             isModalOpan={isModalOpan}
-            handleDeleteUser={handleDeleteUser}
+            handleUser={handleDeleteUser}
           />
         </div>
       )}
