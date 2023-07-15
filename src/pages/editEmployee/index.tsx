@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { EmployeeForm } from "../../components/employeeForm";
@@ -8,7 +8,6 @@ import {
 } from "../../services/employees.api";
 import { IEmplyee } from "../../types/employees.type";
 import { isErrorWithMessage } from "../../utils/IsErrorWithMessage";
-import s from "./index.module.css";
 export const EditEmployee = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

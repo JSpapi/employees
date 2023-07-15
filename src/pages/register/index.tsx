@@ -1,13 +1,21 @@
 import { Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormInput } from "../../components/ui/formInput";
 import { LoadingButton } from "@mui/lab";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useRegisterMutation } from "../../services/auth.api";
+import { isErrorWithMessage } from "../../utils/IsErrorWithMessage";
+import { ErrorMessage } from "../../components/ui/errorMessage";
 export const Register = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const [registerUser] = useRegisterMutation();
+
+  const navigate = useNavigate();
 
   const schema = object({
     name: string()
@@ -33,22 +41,22 @@ export const Register = () => {
     resolver: zodResolver(schema),
   });
 
-  const {
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitSuccessful },
-  } = methods;
+  const { handleSubmit, reset } = methods;
 
-  useEffect(() => {
-    if (isSubmitSuccessful) reset();
-  }, [isSubmitSuccessful, reset]);
-
-  const onFormSubmit: SubmitHandler<RegisterInput> = (data) => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      console.log(data);
-    }, 2000);
+  const onFormSubmit: SubmitHandler<RegisterInput> = async (data) => {
+    try {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+      await registerUser(data).unwrap();
+      navigate("/");
+    } catch (err) {
+      const maybeError = isErrorWithMessage(err);
+      reset();
+      if (maybeError) setError(err.data.message);
+      else setError("Неизвестная ошибка");
+    }
   };
 
   return (
@@ -104,7 +112,7 @@ export const Register = () => {
               </span>
             </LoadingButton>
             <Typography variant="caption" display="block">
-              Уже зарегистрированы?{" "}
+              Уже зарегистрированы?
               <Link
                 to="/login"
                 style={{
@@ -116,6 +124,7 @@ export const Register = () => {
                 Войдите
               </Link>
             </Typography>
+            <ErrorMessage message={error} />
           </form>
         </FormProvider>
       </div>

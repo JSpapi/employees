@@ -1,4 +1,3 @@
-import React from "react";
 import { IEmplyee } from "../../types/employees.type";
 import {
   Paper,
