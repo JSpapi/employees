@@ -14,6 +14,7 @@ interface IProps<T> {
   error?: string;
   loading?: boolean;
   formSubmit: SubmitHandler<T>;
+  data?: IEmplyee;
 }
 
 export const EmployeeForm = ({
@@ -22,6 +23,7 @@ export const EmployeeForm = ({
   error,
   loading,
   formSubmit,
+  data,
 }: IProps<IEmplyee>) => {
   const employeeSchema = object({
     firstName: string()
@@ -38,9 +40,13 @@ export const EmployeeForm = ({
 
   const methods = useForm<IEmplyee>({
     resolver: zodResolver(employeeSchema),
+    defaultValues: {
+      ...data,
+    },
   });
 
   const { handleSubmit } = methods;
+  console.log(data);
 
   return (
     <div className="edit">
@@ -57,6 +63,7 @@ export const EmployeeForm = ({
               margin="dense"
               fullWidth
               variant="filled"
+              value={data?.firstName}
             />
             <FormInput
               name="lastName"
@@ -65,6 +72,7 @@ export const EmployeeForm = ({
               margin="dense"
               fullWidth
               variant="filled"
+              value={data?.firstName}
             />
             <FormInput
               name="age"
@@ -75,6 +83,7 @@ export const EmployeeForm = ({
               fullWidth
               type="number"
               variant="filled"
+              value={data?.firstName}
             />
             <FormInput
               name="address"
