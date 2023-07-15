@@ -1,4 +1,4 @@
-import { IUser, loginData, UserData } from "../types/user.type";
+import { IUser, UserData } from "../types/user.type";
 import { api } from "./api";
 
 type ResponseLoginData = IUser & { token: string };

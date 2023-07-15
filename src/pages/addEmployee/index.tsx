@@ -22,7 +22,7 @@ export const AddEmployee = () => {
     if (!user) navigate("/login");
   }, [navigate, user]);
 
-  const onEditFormSubmit: SubmitHandler<IEmplyee> = async (data) => {
+  const onAddFormSubmit: SubmitHandler<IEmplyee> = async (data) => {
     try {
       setLoading(true);
       setTimeout(() => {
@@ -46,7 +46,7 @@ export const AddEmployee = () => {
     <EmployeeForm
       btnText="Добавить"
       title="Добавить сотрудника"
-      formSubmit={onEditFormSubmit}
+      formSubmit={onAddFormSubmit}
       loading={loading}
       error={error}
     />
