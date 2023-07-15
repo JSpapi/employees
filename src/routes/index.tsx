@@ -7,7 +7,7 @@ import { Status } from "../pages/status";
 
 export const routes = [
   { id: "employeeAdd", path: "/employee/add", element: <AddEmployee /> },
-  { id: "employeeEdit", path: "/employee/edit", element: <EditEmployee /> },
+  { id: "employeeEdit", path: "/employee/edit/:id", element: <EditEmployee /> },
   { id: "employee", path: "/employee/:id", element: <Employee /> },
   { id: "status", path: "/status/:result", element: <Status /> },
   { id: "login", path: "/login", element: <Login /> },

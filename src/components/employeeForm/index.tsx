@@ -1,6 +1,8 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { LoadingButton } from "@mui/lab";
 import { Typography } from "@mui/material";
-import { FormProvider, SubmitHandler, UseFormReturn } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { object, string } from "zod";
 import { IEmplyee } from "../../types/employees.type";
 
 import { ErrorMessage } from "../ui/errorMessage";
@@ -8,7 +10,6 @@ import { FormInput } from "../ui/formInput";
 
 interface IProps<T> {
   title: string;
-  methods: UseFormReturn<T>;
   btnText: string;
   error?: string;
   loading?: boolean;
@@ -17,12 +18,28 @@ interface IProps<T> {
 
 export const EmployeeForm = ({
   title,
-  methods,
   btnText,
   error,
   loading,
   formSubmit,
 }: IProps<IEmplyee>) => {
+  const employeeSchema = object({
+    firstName: string()
+      .nonempty("Поле обязательно для заполнения")
+      .min(2, "Имя должно состоять не меньше 2 символов")
+      .max(32, "Имя должно состоять не больше 32 символов"),
+    lastName: string()
+      .nonempty("Поле обязательно для заполнения")
+      .min(2, "Фамилия должно состоять не меньше 2 символов")
+      .max(32, "Фамилия должно состоять не больше 32 символов"),
+    age: string().nonempty("Поле обязательно для заполнения"),
+    address: string().nonempty("Поле обязательно для заполнения"),
+  });
+
+  const methods = useForm<IEmplyee>({
+    resolver: zodResolver(employeeSchema),
+  });
+
   const { handleSubmit } = methods;
 
   return (
