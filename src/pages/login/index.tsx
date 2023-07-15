@@ -10,12 +10,11 @@ import { useLoginMutation } from "../../services/auth.api";
 import { UserData } from "../../types/user.type";
 import { isErrorWithMessage } from "../../utils/IsErrorWithMessage";
 import { ErrorMessage } from "../../components/ui/errorMessage";
-import s from "./index.module.css";
 export const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const [loginUser, loginUserResult] = useLoginMutation();
+  const [loginUser] = useLoginMutation();
 
   const navigate = useNavigate();
 
