@@ -46,7 +46,6 @@ export const EmployeeForm = ({
   });
 
   const { handleSubmit } = methods;
-  console.log(data);
 
   return (
     <div className="edit">

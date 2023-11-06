@@ -54,7 +54,8 @@ export const Login = () => {
       }
     }
   };
-
+   // TODO 1 LOGOUT LOGIC AND PROTECTED ROUTER
+      // TODO 2 SEND EMAIL AFTER REGISTRATION WITH RTK QUERY
   return (
     <div className="login">
       <div className="login__content">

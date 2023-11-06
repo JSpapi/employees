@@ -9,3 +9,4 @@ export const ErrorMessage = ({ message }: IProps) => {
 
   return <Alert severity="error">{message}</Alert>;
 };
+
