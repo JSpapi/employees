@@ -1,11 +1,11 @@
-import { IUser, UserData } from "../types/user.type";
+import { IUser, LoginData, UserData } from "../types/user.type";
 import { api } from "./api";
 
 type ResponseLoginData = IUser & { token: string };
 
 export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation<ResponseLoginData, UserData>({
+    login: builder.mutation<ResponseLoginData, LoginData>({
       query: (userData) => ({
         url: "/user/login",
         method: "POST",
