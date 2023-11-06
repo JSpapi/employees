@@ -6,3 +6,6 @@ export interface IUser {
 }
 
 export type UserData = Omit<IUser, "id">;
+
+// !LOGIN POST TYPE
+export type LoginData = Pick<UserData, "email" | "password">;

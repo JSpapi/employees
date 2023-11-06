@@ -7,7 +7,7 @@ import { FormInput } from "../../components/ui/formInput";
 import { LoadingButton } from "@mui/lab";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../services/auth.api";
-import { UserData } from "../../types/user.type";
+import { LoginData } from "../../types/user.type";
 import { isErrorWithMessage } from "../../utils/IsErrorWithMessage";
 import { ErrorMessage } from "../../components/ui/errorMessage";
 export const Login = () => {
@@ -36,7 +36,7 @@ export const Login = () => {
 
   const { handleSubmit, resetField } = methods;
 
-  const onFormSubmit: SubmitHandler<UserData> = async (data) => {
+  const onFormSubmit: SubmitHandler<LoginData> = async (data) => {
     try {
       setLoading(true);
       setTimeout(() => {
@@ -54,8 +54,8 @@ export const Login = () => {
       }
     }
   };
-   // TODO 1 LOGOUT LOGIC AND PROTECTED ROUTER
-      // TODO 2 SEND EMAIL AFTER REGISTRATION WITH RTK QUERY
+  // TODO 1 LOGOUT LOGIC AND PROTECTED ROUTER
+  // TODO 2 SEND EMAIL AFTER REGISTRATION WITH RTK QUERY
   return (
     <div className="login">
       <div className="login__content">
