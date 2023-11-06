@@ -1,8 +1,4 @@
-import {
-  combineReducers,
-  configureStore,
-  getDefaultMiddleware,
-} from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { reducer as authReducer } from "./features/auth/auth.slice";
 import { reducer as employeesReducer } from "./features/emplyees/employees.slice";
 import { listenerMiddleware } from "./middleware/authToken";
