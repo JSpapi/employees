@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 
-const AUTH_API = `http://localhost:8000/api`;
+const AUTH_API = `http://localhost:3000/`;
+// const AUTH_API = `https://employee-data-wxlb.onrender.com/`;
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: AUTH_API,
+baseUrl: AUTH_API,
   prepareHeaders(headers, { getState }) {
     const token =
       (getState() as RootState).auth.user?.token ||

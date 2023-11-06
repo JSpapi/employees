@@ -1,4 +1,4 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import { FormBtn } from "../../components/ui/formBtn";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useGetAllEmployeesQuery } from "../../services/employees.api";
